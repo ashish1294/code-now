@@ -21,7 +21,7 @@ Any Linux Distro, Google Chrome Browser, Python 2.7 or above and Your favorite I
 Installation
 ------------
 
-Easy 2-step Installation. Download the zip file of the application from here () and unzip it.
+Easy 2-step Installation. Download the zip file of the application from here (https://drive.google.com/file/d/0B6A-3_6rwie9OFRJZVFOb1JUWW8/edit?usp=sharing ) and unzip it.
 
 1. **Install Plugin** - The archive contains a file called chrome.crx which can simply be installed by dragging and dropping it to chrome extension page (It can be accessed via chrome://extensions/ or via Settings -> Extensions)
 
