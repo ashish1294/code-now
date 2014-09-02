@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,  
+  "name": "Codechef Code - Now",
+  "description": "Extension to Add Code-Now Button to CodeChef Questions",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["http://www.codechef.com/*"],
+      "js": ["code_later.js"]
+    }
+  ],
+  "background": {
+    "persistent" : false,
+    "scripts" : ["back.js"]
+  },
+  "icons":{
+    "16" : "icon.png",
+    "48" : "icon.png",
+    "128": "icon.png"
+  },
+  "permissions" : [
+    "tabs", "nativeMessaging", "http://*/", "https://*/"
+  ]
+}
