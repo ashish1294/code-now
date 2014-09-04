@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo "pwd"
-pwd
-if hash google-chrome &> /dev/null;
+if hash google-chrome > /dev/null 2>&1;
 then
 	echo "Google Chrome Detected . . . . . ."
 else
@@ -11,7 +9,7 @@ else
 	exit 127
 fi
 
-if hash python &> /dev/null;
+if hash python > /dev/null 2>&1;
 then
 	echo "Python Detected . . . . . . . . ."
 else
@@ -21,9 +19,9 @@ else
 fi
 
 path_dir="$HOME/.config/google-chrome/NativeMessagingHosts"
-rm -r "$path_dir" &> /dev/null
 mkdir -p $path_dir/code-now/
-echo "$path_dir/code-now/"
+rm -r "$path_dir/code-now"
+mkdir -p $path_dir/code-now/
 json_file="$path_dir/codenow.json"
 
 if [ -f $json_file ]
@@ -31,15 +29,11 @@ then
 	rm $json_file
 fi
 
-echo "The installation folder comes with 3 template files for C, C++ and Java. All new codes will contain their repective templates. Use these template files to include/import all the required header files and classes. Enter Y or y if you want to exit and edit the template files or else any other key to continue :"
+echo "The installation folder comes with 3 template files for C, C++ and Java. All new codes will contain their repective templates. Use these template files to include/import all the required header files and classes. Enter Y or y if you want to continue:"
 
 read choice
 
-if [ $choice == 'Y' ]
-then
-	exit 0
-fi
-if [ $choice == 'y' ]
+if [ $choice != "Y" ] && [ $choice != "y" ]
 then
 	exit 0
 fi
@@ -50,7 +44,7 @@ while [ $ch -eq 1 ]
 do
 echo "Enter the IDE for C :"
 read cide
-if hash $cide &> /dev/null;
+if hash $cide > /dev/null 2>&1;
 then
 	echo "$cide was found on your system !! Successfully Configured ..........."
 	ch=0
@@ -64,12 +58,12 @@ while [ $ch -eq 1 ]
 do
 echo "Enter the IDE for C++ :"
 read cppide
-if hash $cppide &> /dev/null;
+if hash $cppide > /dev/null 2>&1;
 then
 	echo "$cppide was found on your system !! Successfully Configured ..........."
 	ch=0
 else
-	echo "No softw	are named $cppide was not found on your system !!"
+	echo "No software named $cppide was not found on your system !!"
 fi
 done
 
@@ -78,7 +72,7 @@ while [ $ch -eq 1 ]
 do
 echo "Enter the IDE for Java :"
 read javaide
-if hash $javaide &> /dev/null;
+if hash $javaide > /dev/null 2>&1;
 then
 	echo "$javaide was found on your system !! Successfully Configured ..........."
 	ch=0
@@ -112,7 +106,7 @@ cat "host_program.sh" >> "$path_dir/code-now/host_program.sh"
 chmod +x "$path_dir/code-now/host_program.sh"
 echo "Host Program Created ......................."
 
-# creating the prog.py script
+# Creating the prog.py script
 cp prog.py $path_dir/code-now/prog.py
 sed "s:PATH_TO_EXEC_SCRIPT:$path_dir/code-now/host_program.sh:g" prog.py > $path_dir/code-now/prog.py
 chmod +x "$path_dir/code-now/prog.py"

@@ -6,8 +6,8 @@ A chrome plugin to instantly open your Favorite IDE
 What it does !!
 ---------------
 
-It is a simple chrome plugin for Linux Users which adds 3 button to every CodeChef Problem Page (for each of C, C++ and Java).
-Clicking on each button will open up your favorite IDE for that language instantly with a default template !! It is particularly useful during short contests, whe.
+It is a simple chrome plugin for **Linux Users** which adds 3 button to every CodeChef Problem Page (for each of C, C++ and Java).
+Clicking on each button will open up your favorite IDE for that language instantly with a default template !! It is particularly useful during short contests.
 
 You can choose different IDEs for different Languages. Templates can also be different for different Languages.
 
@@ -17,11 +17,13 @@ Prerequisites
 
 Any Linux Distro, Google Chrome Browser, Python 2.7 or above and Your favorite IDEs
 
+Google Chrome can be installed from here : https://www.google.com/chrome/browser/
+
 
 Installation
 ------------
 
-Easy 2-step Installation. Download the zip file of the application from here (https://drive.google.com/file/d/0B6A-3_6rwie9OFRJZVFOb1JUWW8/edit?usp=sharing ) and unzip it.
+Easy 2-step Installation. Download the zip file of the application from here (https://drive.google.com/file/d/0B6A-3_6rwie9OFRJZVFOb1JUWW8/edit?usp=sharing ) and unzip it
 
 1. **Install Plugin** - The archive contains a file called chrome.crx which can simply be installed by dragging and dropping it to chrome extension page (It can be accessed via chrome://extensions/ or via Settings -> Extensions)
 
