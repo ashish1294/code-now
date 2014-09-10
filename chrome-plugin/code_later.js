@@ -9,6 +9,8 @@ if(us.length>1 && us[us.length-2] === "problems")
         +"<li><a href='#' id='code_now_id_c_button'>Code in C</a></li>"
         +"<li><a href='#' id='code_now_id_c++_button'>Code in C++</a></li>";
 
+        console.log("Code Now Button Added !! ~ Code Now Extension");
+
         document.getElementById("code_now_id_java_button").onclick = function(){
             var prob_name = document.getElementsByTagName("h1")[0].innerHTML;
             var prob_url = document.URL;
@@ -17,6 +19,7 @@ if(us.length>1 && us[us.length-2] === "problems")
             if(user_code.innerHTML.search("Login") != -1)
             {
                 u_name = "No User";
+                console.log("Java Code Now Clicked !! No user Logged in");
             }
             else
             {
@@ -33,6 +36,7 @@ if(us.length>1 && us[us.length-2] === "problems")
             if(user_code.innerHTML.search("Login") != -1)
             {
                 u_name = "No User";
+                console.log("C Code Now Clicked !! No user Logged in");
             }
             else
             {
@@ -49,6 +53,7 @@ if(us.length>1 && us[us.length-2] === "problems")
             if(user_code.innerHTML.search("Login") != -1)
             {
                 u_name = "No User";
+                console.log("C++ Code Now Clicked !! No User Logged in");
             }
             else
             {

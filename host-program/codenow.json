@@ -1,7 +1,7 @@
 {
   "name": "codenow",
   "description": "IDE Selector on CLient's Machine",
-  "path": "/home/ashish/.config/google-chrome/NativeMessagingHosts/code-now/prog.py",
+  "path": "PATH_TO_REQ_DIR/code-now/prog.py",
   "type": "stdio",
   "allowed_origins": [
     "chrome-extension://eiifebdnfcadjhgenpanagdankjhkjeb/"
