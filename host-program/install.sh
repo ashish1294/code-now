@@ -8,16 +8,6 @@ if [ "$UID" -ne "$ROOT_UID" ] ; then
 	exit 127
 fi
 
-#Checking if Google-Chrome is installed
-if hash google-chrome > /dev/null 2>&1;
-then
-	echo "Google Chrome Detected . . . . . ."
-else
-	echo "Google Chrome Not found !! Please download and install google chrome from https://www.google.com/chrome/browser/"
-	echo "Terminating .........!!"
-	exit 127
-fi
-
 #Checking if Python is installed
 if hash python > /dev/null 2>&1;
 then
@@ -28,24 +18,41 @@ else
 	exit 127
 fi
 
-#At this point as pre-requisites are met. Proceeding with installation
-
-path_dir="$HOME/.config/google-chrome/NativeMessagingHosts"
-mkdir -p $path_dir/code-now/
-rm -r "$path_dir/code-now"
-mkdir -p $path_dir/code-now/
-json_file="$path_dir/codenow.json"
-json_file2="/etc/opt/chrome/native-messaging-hosts/codenow.json"
-mkdir -p /etc/opt/chrome/native-messaging-hosts > /dev/null 2>&1
-
-if [ -f $json_file ]
+#Checking if Google-Chrome is installed
+ischrome=0
+if hash google-chrome > /dev/null 2>&1;
 then
-	rm $json_file
+	echo "Google Chrome Detected . . . . . ."
+	ischrome=1
+else
+	echo "Google Chrome Not found !! Please download and install google chrome from https://www.google.com/chrome/browser/"
+	echo "Terminating .........!!"
+	exit 127
 fi
 
-if [ -f $json_file2 ]
+#Checking if Chromium Browser is installed
+ischromium=0
+if hash chromium-browser > /dev/null 2>&1;
 then
-	rm $json_file2
+	echo "Chromium Browser Detected . . . . . ."
+	ischromium=1
+fi
+
+if [ $ischrome -eq 0 ] && [ $ischromium -eq 0 ]
+then
+	echo "Neither Google Chrome nor chromium was found !! Please download and install google chrome from https://www.google.com/chrome/browser/"
+	echo "\n\n"
+	echo "Do You want to automatically install chromium browser now ??? [Y/y for yes, Any other input for no] : "
+	read inst_ch
+	if [ $inst_ch -eq 'Y' ] || [ $inst_ch -eq 'y']
+	then
+		apt-get install chromium-browser
+		ischromium=1
+	else
+		echo "Installation Incomplete"
+		echo "Terminating ............!!"
+		exit 127
+	fi
 fi
 
 echo "The installation folder comes with 3 template files for C, C++ and Java. All new codes will contain their repective templates. Use these template files to include/import all the required header files and classes. Enter Y or y if you want to continue:"
@@ -54,8 +61,12 @@ read choice
 
 if [ $choice != "Y" ] && [ $choice != "y" ]
 then
-	exit 0
+	echo "Installation Incomplete .........."
+	echo "Terminating ..............!!"
+	exit 127
 fi
+
+#At this point as pre-requisites are met. Proceeding with installation
 
 # Reading the settings Parameter Here
 ch=1
@@ -106,6 +117,50 @@ read sol_path
 if [ ! -d $sol_path ]
 then
 	mkdir -p $sol_path
+fi
+
+#Creating Required Directories
+
+if [ $ischromium -eq 1 ]
+then
+	path_dir="$HOME/.config/chromium/NativeMessagingHosts"
+	mkdir -p $path_dir/code-now/
+	rm -r "$path_dir/code-now"
+	mkdir -p $path_dir/code-now/
+	json_file="$path_dir/codenow.json"
+	json_file2="/etc/opt/chrome/native-messaging-hosts/codenow.json"
+	mkdir -p /etc/opt/chrome/native-messaging-hosts > /dev/null 2>&1
+
+	if [ -f $json_file ]
+	then
+		rm $json_file
+	fi
+
+	if [ -f $json_file2 ]
+	then
+		rm $json_file2
+	fi
+fi
+
+if [ $ischrome -eq 1 ]
+then
+	path_dir="$HOME/.config/google-chrome/NativeMessagingHosts"
+	mkdir -p $path_dir/code-now/
+	rm -r "$path_dir/code-now"
+	mkdir -p $path_dir/code-now/
+	json_file="$path_dir/codenow.json"
+	json_file2="/etc/opt/chrome/native-messaging-hosts/codenow.json"
+	mkdir -p /etc/opt/chrome/native-messaging-hosts > /dev/null 2>&1
+
+	if [ -f $json_file ]
+	then
+		rm $json_file
+	fi
+
+	if [ -f $json_file2 ]
+	then
+		rm $json_file2
+	fi
 fi
 
 # Creating the Json Manifest File
