@@ -125,6 +125,11 @@ then
 	then
 		rm $json_file
 	fi
+	inst_dir="$HOME/.config/google-chrome/NativeMessagingHosts"
+	if [ ! -d $inst_dir ]
+	then
+		mkdir -p $inst_dir
+	fi
 	(cat codenow.json | sed -e "s:PATH_TO_REQ_PROG:$path_dir/.code-now/prog.py:g") > $HOME/.config/google-chrome/NativeMessagingHosts/codenow.json
 fi
 
@@ -134,6 +139,11 @@ then
 	if [ -f $json_file ]
 	then
 		rm $json_file
+	fi
+	inst_dir="$HOME/.config/chromium/NativeMessagingHosts"
+	if [ ! -d $inst_dir ]
+	then
+		mkdir -p $inst_dir
 	fi
 	(cat codenow.json | sed -e "s:PATH_TO_REQ_PROG:$path_dir/.code-now/prog.py:g") > $HOME/.config/chromium/NativeMessagingHosts/codenow.json
 fi
@@ -151,7 +161,7 @@ echo "Python Script Created ......................"
 
 # Copying the template files
 cp c_template.c $path_dir/.code-now/
-cp cpp_template.cpp $path_dir/code-now/
+cp cpp_template.cpp $path_dir/.code-now/
 cp java_template.java $path_dir/.code-now/
 echo "Templates Copied............................"
 
