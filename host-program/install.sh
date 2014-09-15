@@ -103,13 +103,32 @@ else
 fi
 done
 
-echo "Enter the path to the solution-folder (It will be created if doesn't exist) : "
-read sol_path
+loop=1
+while [ $loop -eq 1 ]
+do
+	echo "Enter the path to the solution-folder (It will be created if doesn't exist) : "
+	read sol_path
 
-if [ ! -d $sol_path ]
-then
-	mkdir -p $sol_path
-fi
+	if [[ -z $sol_path ]]
+	then
+		echo "No Input Found !! Try Again"
+	elif [ -f $sol_path ]
+	then
+		echo "The Path Specified is a regular file!! Please enter path to a directory !!"
+	else
+		mkdir -p $sol_path
+		ret=$?
+		if [ $ret -ne 0 ]
+		then
+			echo "Error in detecting/creating Directory !!"
+		elif [ -w $sol_path ]
+		then
+			loop=0
+		else
+			echo "The diectory should have write permission !!"
+		fi
+	fi
+done
 
 #Creating Required Directories
 
