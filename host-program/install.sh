@@ -25,10 +25,6 @@ if hash google-chrome > /dev/null 2>&1;
 then
 	echo "Google Chrome Detected . . . . . ."
 	ischrome=1
-else
-	echo "Google Chrome Not found !! Please download and install google chrome from https://www.google.com/chrome/browser/"
-	echo "Terminating .........!!"
-	exit 127
 fi
 
 #Checking if Chromium Browser is installed
