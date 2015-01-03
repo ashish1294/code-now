@@ -1,5 +1,5 @@
 us = document.URL.split("/");
-if(us.length>1 && us[us.length-2] === "problems")
+if(us.length > 1 && us[0].split(".")[1] === "codechef" && us[us.length-2] === "problems")
 {
     if(us[us.length - 1] !== "easy" && us[us.length - 1] !== "medium" && us[us.length - 1] !== "hard" && us[us.length - 1]
                 !== "challenge" && us[us.length - 1] !== "extcontest" && us[us.length - 1] !== "school")
@@ -12,7 +12,7 @@ if(us.length>1 && us[us.length-2] === "problems")
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
         document.getElementById("code_now_id_java_button").onclick = function(){
-            var prob_name = document.getElementsByTagName("h1")[0].innerHTML;
+            var prob_name = document.title.split("|")[0];
             var prob_url = document.URL;
             var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
             var u_name = "";
@@ -29,7 +29,7 @@ if(us.length>1 && us[us.length-2] === "problems")
         };
 
         document.getElementById("code_now_id_c_button").onclick = function(){
-            var prob_name = document.getElementsByTagName("h1")[0].innerHTML;
+            var prob_name = document.title.split("|")[0];
             var prob_url = document.URL;
             var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
             var u_name = "";
@@ -46,7 +46,7 @@ if(us.length>1 && us[us.length-2] === "problems")
         };
 
         document.getElementById("code_now_id_c++_button").onclick = function(){
-            var prob_name = document.getElementsByTagName("h1")[0].innerHTML;
+            var prob_name = document.title.split("|")[0];
             var prob_url = document.URL;
             var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
             var u_name = "";
