@@ -1,5 +1,5 @@
 Following is a list of things to be done :
 
-1. Support Other Websites - Spoj, Codeforces, Timus, etc.
+1. Support Other Websites - Codeforces, Timus, etc.
 2. Add support for Windows and MAC
 3. Write similar plugin for Firefox and Safari
