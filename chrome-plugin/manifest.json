@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,  
   "name": "Codechef Code - Now",
-  "description": "Extension to Add Code-Now Button to CodeChef Questions",
+  "description": "Extension to Add Code-Now Button to CodeChef and SPOJ Problem Pages",
   "version": "1.0",
   "content_scripts": [
     {
-      "matches": ["http://www.codechef.com/*"],
+      "matches": ["http://www.codechef.com/*", "http://www.spoj.com/*"],
       "js": ["code_later.js"]
     }
   ],
