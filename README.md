@@ -40,3 +40,12 @@ chmod +x install.sh
 ```
 
 You can configure your default IDEs for each of the 3 languages during installation. In case you need to re-configure your templates or IDEs please reinstall the host program by runnning the installation script again.
+
+Development
+-----------
+
+This a small app. Most code is self explainatory. Three primary languages - js, shell-scripting and python. You might use IDE if you want. The flow of the system is :
+
+1. JS script runs on all problem pages. Extracts the problem information and adds the button. Click Listenors sends the data to native host.
+2. Native host is a python script on local system. It reads the data and makes a new file, add appropriate header and then starts a the IDE is a separate thread.
+3. Shell Script is useful to install the system. It checks for dependencies and configures the values used in python script.
