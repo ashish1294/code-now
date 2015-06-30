@@ -81,11 +81,10 @@ else if(us.length > 4 && us[2].split(".")[1] === "spoj" && us[us.length-2] === "
         //+ "<td><a id='code_now_id_c_button'>Code in C</a></td>"
         //+ "<td><a id='code_now_id_c++_button'>Code in C++<a></a></td>"
         //+ "</tr>"
-document.getElementsByClassName("text-center")[0].innerHTML= document.getElementsByClassName("text-center")[0].innerHTML +  "<tr class='navigation'>"
+		document.getElementById("problem-btn-submit-box").innerHTML+= "<br><br> <tr class='navigation'>"
         + "<td><a id='code_now_id_java_button' class ='btn btn-primary'>Code in Java</a></td>"
         + "<td><a id='code_now_id_c_button' class ='btn btn-primary'>Code in C</a></td>"
         + "<td><a id='code_now_id_c++_button' class ='btn btn-primary'>Code in C++<a></a></td>"
-        + "</tr>"
 
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
