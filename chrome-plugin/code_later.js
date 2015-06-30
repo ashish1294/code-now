@@ -74,62 +74,67 @@ else if(us.length > 4 && us[2].split(".")[1] === "spoj" && us[us.length-2] === "
     var code = us[us.length - 2];
     if(code !== "classical" && code !== "challenge" && code !== "partial" && code !== "tutorial" && code !== "riddle")
     {
-        document.getElementsByClassName("problems")[0].getElementsByTagName("tbody")[0].innerHTML = 
-        document.getElementsByClassName("problems")[0].getElementsByTagName("tbody")[0].innerHTML 
-        + "<tr class='navigation'>"
-        + "<td><a id='code_now_id_java_button'>Code in Java</a></td>"
-        + "<td><a id='code_now_id_c_button'>Code in C</a></td>"
-        + "<td><a id='code_now_id_c++_button'>Code in C++<a></a></td>"
+        //document.getElementsByClassName("problems")[0].getElementsByTagName("tbody")[0].innerHTML = 
+        //document.getElementsByClassName("problems")[0].getElementsByTagName("tbody")[0].innerHTML 
+        //+ "<tr class='navigation'>"
+        //+ "<td><a id='code_now_id_java_button'>Code in Java</a></td>"
+        //+ "<td><a id='code_now_id_c_button'>Code in C</a></td>"
+        //+ "<td><a id='code_now_id_c++_button'>Code in C++<a></a></td>"
+        //+ "</tr>"
+document.getElementsByClassName("text-center")[0].innerHTML= document.getElementsByClassName("text-center")[0].innerHTML +  "<tr class='navigation'>"
+        + "<td><a id='code_now_id_java_button' class ='btn btn-primary'>Code in Java</a></td>"
+        + "<td><a id='code_now_id_c_button' class ='btn btn-primary'>Code in C</a></td>"
+        + "<td><a id='code_now_id_c++_button' class ='btn btn-primary'>Code in C++<a></a></td>"
         + "</tr>"
 
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
         document.getElementById("code_now_id_java_button").onclick = function(){
-            var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h1")[0].innerHTML.split(".")[1].trim();
+            var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
             var prob_url = url;
-            var user_code = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h2")[1].innerHTML.split(":")[1].trim();
+            //var user_code = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h2")[1].innerHTML.split(":")[1].trim();
             var u_name = "";
-            if(document.getElementsByClassName("menucmd")[0].innerText.search("register") != -1)
+            if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
             {
                 u_name = "No User";
             }
             else
             {
-                u_name = document.getElementsByClassName("menucmd")[0].getElementsByTagName("b")[1].innerText.trim();
+                u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
             }
             chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "java"});
         };
 
         document.getElementById("code_now_id_c_button").onclick = function(){
             console.log("C Code Now Clicked. Opening C IDE");
-            var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h1")[0].innerHTML.split(".")[1].trim();
+            var prob_name =  document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
             var prob_url = url;
-            var user_code = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h2")[1].innerHTML.split(":")[1].trim();
+            //var user_code = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h2")[1].innerHTML.split(":")[1].trim();
             var u_name = "";
-            if(document.getElementsByClassName("menucmd")[0].innerText.search("register") != -1)
+            if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
             {
                 u_name = "No User";
             }
             else
             {
-                u_name = document.getElementsByClassName("menucmd")[0].getElementsByTagName("b")[1].innerText.trim();
+                u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
             }
             chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "c"});
         };
 
         document.getElementById("code_now_id_c++_button").onclick = function(){
             console.log("C++ Code Now Clicked. Opening C++ IDE");
-            var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h1")[0].innerHTML.split(".")[1].trim();
+            var prob_name =  document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
             var prob_url = url;
-            var user_code = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h2")[1].innerHTML.split(":")[1].trim();
+            //var user_code = document.getElementsByClassName("prob")[0].getElementsByTagName("table")[0].getElementsByTagName("h2")[1].innerHTML.split(":")[1].trim();
             var u_name = "";
-            if(document.getElementsByClassName("menucmd")[0].innerText.search("register") != -1)
+            if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
             {
                 u_name = "No User";
             }
             else
             {
-                u_name = document.getElementsByClassName("menucmd")[0].getElementsByTagName("b")[1].innerText.trim();
+                u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
             }
             chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "cpp"});
         };
