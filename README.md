@@ -49,3 +49,11 @@ This a small app. Most code is self explainatory. Three primary languages - js, 
 1. JS script runs on all problem pages. Extracts the problem information and adds the button. Click Listenors sends the data to native host.
 2. Native host is a python script on local system. It reads the data and makes a new file, add appropriate header and then starts a the IDE is a separate thread.
 3. Shell Script is useful to install the system. It checks for dependencies and configures the values used in python script.
+
+Contributors
+------------
+
+Following is a list of contributors:
+
+1. Ashish Kedia (@ashish1294)
+2. Dementor (@sam17)
