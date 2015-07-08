@@ -19,6 +19,46 @@ for(i = 0; i < website.length; i++)
     }
 }
 
+function click_codechef(language)
+{
+    console.log(language + " Code Now Clicked. Opening " + language + " IDE");
+    var prob_name = document.title.split("|")[0].trim();
+    var prob_url = url;
+    var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
+    var u_name = "";
+    //Checking if User is LoggedIn
+    if(user_code.innerHTML.search("Login") != -1)
+    {
+        //No Logged In User Detected
+        u_name = "No User";
+        console.log("Java Code Now Clicked !! No user Logged in");
+    }
+    else
+    {
+        //A user is logged in
+        u_name = user_code.textContent.replace("Hello ", "").trim().split('!')[0];
+    }
+    //Sending Message to the native host with a json object of problem details
+    chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : language});
+}
+
+function click_spoj(language)
+{
+    console.log(language + " Code Now Clicked. Opening " + language + " IDE");
+    var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
+    var prob_url = url;
+    var u_name = "";
+    if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
+    {
+        u_name = "No User";
+    }
+    else
+    {
+        u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
+    }
+    chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : language});
+}
+
 function click_codeforces(language)
 {
     console.log(language + " Code Now Clicked. Opening " + language + " IDE");
@@ -55,63 +95,13 @@ if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
         //Adding listener for Java Button
-        document.getElementById("code_now_id_java_button").onclick = function(){
-            console.log("Java Code Now Clicked. Opening Java IDE");
-            var prob_name = document.title.split("|")[0].trim();
-            var prob_url = url;
-            var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
-            var u_name = "";
-            //Checking if User is LoggedIn
-            if(user_code.innerHTML.search("Login") != -1)
-            {
-                //No Logged In User Detected
-                u_name = "No User";
-                console.log("Java Code Now Clicked !! No user Logged in");
-            }
-            else
-            {
-                //A user is logged in
-                u_name = user_code.textContent.replace("Hello ", "").trim().split('!')[0];
-            }
-            //Sending Message to the native host with a json object of problem details
-            chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "java"});
-        };
+        document.getElementById("code_now_id_java_button").onclick = function(){ click_codechef("java"); };
 
         //Adding Listener for C Button
-        document.getElementById("code_now_id_c_button").onclick = function(){
-            console.log("C Code Now Clicked. Opening C IDE");
-            var prob_name = document.title.split("|")[0].trim();
-            var prob_url = url;
-            var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
-            var u_name = "";
-            if(user_code.innerHTML.search("Login") != -1)
-            {
-                u_name = "No User";
-            }
-            else
-            {
-                u_name = user_code.textContent.replace("Hello ", "").trim().split('!')[0];
-            }
-            chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "c"});
-        };
+        document.getElementById("code_now_id_c_button").onclick = function(){ click_codechef("c"); };
 
         //Adding Button for C++ Button
-        document.getElementById("code_now_id_c++_button").onclick = function(){
-            console.log("C++ Code Now Clicked. Opening C++ IDE");
-            var prob_name = document.title.split("|")[0].trim();
-            var prob_url = url;
-            var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
-            var u_name = "";
-            if(user_code.innerHTML.search("Login") != -1)
-            {
-                u_name = "No User";
-            }
-            else
-            {
-                u_name = user_code.textContent.replace("Hello ", "").trim().split('!')[0];
-            }
-            chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "cpp"});
-        };
+        document.getElementById("code_now_id_c++_button").onclick = function(){ click_codechef("cpp"); };
     }
 }
 
@@ -129,53 +119,9 @@ else if(us.length > 4 && website === "spoj" && us[us.length - 2] === "problems")
 
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
-        document.getElementById("code_now_id_java_button").onclick = function(){
-            console.log("Java Code Now Clicked. Opening Java IDE");
-            var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
-            var prob_url = url;
-            var u_name = "";
-            if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
-            {
-                u_name = "No User";
-            }
-            else
-            {
-                u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
-            }
-            chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "java"});
-        };
-
-        document.getElementById("code_now_id_c_button").onclick = function(){
-            console.log("C Code Now Clicked. Opening C IDE");
-            var prob_name =  document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
-            var prob_url = url;
-            var u_name = "";
-            if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
-            {
-                u_name = "No User";
-            }
-            else
-            {
-                u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
-            }
-            chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "c"});
-        };
-
-        document.getElementById("code_now_id_c++_button").onclick = function(){
-            console.log("C++ Code Now Clicked. Opening C++ IDE");
-            var prob_name =  document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
-            var prob_url = url;
-            var u_name = "";
-            if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
-            {
-                u_name = "No User";
-            }
-            else
-            {
-                u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
-            }
-            chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : "cpp"});
-        };
+        document.getElementById("code_now_id_java_button").onclick = function(){ click_spoj("java"); };
+        document.getElementById("code_now_id_c_button").onclick = function(){ click_spoj("c"); };
+        document.getElementById("code_now_id_c++_button").onclick = function(){ click_spoj("cpp"); };
     }
 }
 
