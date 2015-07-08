@@ -29,7 +29,7 @@ Installation
 
 Easy 2-step Installation. Download the latest release here -> [Release v3.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v3/code-now-CodeChef-v3.0.zip) and unzip it
 
-1. **Install Plugin** - The archive contains a file called Chrome.crx which can simply be installed by dragging and dropping it to chrome extension page (It can be accessed via chrome://extensions/ or via Settings -> Extensions)
+1. **Install Plugin** - The chrome plugin is available for free installation on Chrome Web Store. Install it [here](https://chrome.google.com/webstore/detail/code-now-for-codechef-spo/eiifebdnfcadjhgenpanagdankjhkjeb)
 
 2. **Install Host Program** - A simple script has been provided for installation of the host script on your machine which can communicate with the chrome plugin. Before installing, please edit the template files provided. These templates will be automatically added to all your solutions. After editing Templates you can first set the executable bit of the install.sh script and then execute it.
 
