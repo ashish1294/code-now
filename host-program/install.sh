@@ -121,7 +121,7 @@ do
 		then
 			loop=0
 		else
-			echo "The diectory should have write permission !!"
+			echo "The directory should have write permission !!"
 		fi
 	fi
 done
