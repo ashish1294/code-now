@@ -99,6 +99,20 @@ else
 fi
 done
 
+ch=1
+while [ $ch -eq 1 ]
+do
+echo "Enter the IDE for Python :"
+read pythonide
+if hash $pythonide > /dev/null 2>&1;
+then
+	echo "$pythonide was found on your system !! Successfully Configured ..........."
+	ch=0
+else
+	echo "No software named $pythonide was not found on your system !!"
+fi
+done
+
 loop=1
 while [ $loop -eq 1 ]
 do
@@ -168,6 +182,7 @@ echo "JSON file created .........................."
 # Creating the prog.py script
 cp prog.py $path_dir/.code-now/prog.py
 sed "s:DEFAULT_SOLUTION_PATH:$sol_path:g" $path_dir/.code-now/prog.py > $path_dir/.code-now/prog.py.tmp && mv $path_dir/.code-now/prog.py.tmp $path_dir/.code-now/prog.py
+sed "s:PYTHON_IDE:$pythonide:g" $path_dir/.code-now/prog.py > $path_dir/.code-now/prog.py.tmp && mv $path_dir/.code-now/prog.py.tmp $path_dir/.code-now/prog.py
 sed "s:JAVA_IDE:$javaide:g" $path_dir/.code-now/prog.py > $path_dir/.code-now/prog.py.tmp && mv $path_dir/.code-now/prog.py.tmp $path_dir/.code-now/prog.py
 sed "s:CPP_IDE:$cppide:g" $path_dir/.code-now/prog.py > $path_dir/.code-now/prog.py.tmp && mv $path_dir/.code-now/prog.py.tmp $path_dir/.code-now/prog.py
 sed "s:C_IDE:$cide:g" $path_dir/.code-now/prog.py > $path_dir/.code-now/prog.py.tmp && mv $path_dir/.code-now/prog.py.tmp $path_dir/.code-now/prog.py
@@ -178,6 +193,7 @@ echo "Python Script Created ......................"
 cp c_template.c $path_dir/.code-now/
 cp cpp_template.cpp $path_dir/.code-now/
 cp java_template.java $path_dir/.code-now/
+cp python_template.py $path_dir/.code-now/
 echo "Templates Copied............................"
 
 echo "Installation Successful !! Please Install the extension"
