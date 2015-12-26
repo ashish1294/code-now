@@ -66,6 +66,12 @@ def read_func():
         except subprocess.CalledProcessError, e:
             send_message('{"text": "Bad Settings. Please Reinstall !!"}')
 
+    elif info[3] == "python" :
+        try:
+            exit_code = subprocess.check_output(['PYTHON_IDE', filename])
+        except subprocess.CalledProcessError, e:
+            send_message('{"text": "Bad Settings. Please Reinstall !!"}')
+
 def Main():
   read_func()
   sys.exit(0)
