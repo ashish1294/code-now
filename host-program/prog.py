@@ -15,7 +15,7 @@ def send_message(message):
   sys.stdout.write(message)
   sys.stdout.flush()
 
-# Functiom that reads messages from the chrome-plugin
+# Function that reads messages from the chrome-plugin
 def read_func():
   while 1:
     text_length_bytes = sys.stdin.read(4)
