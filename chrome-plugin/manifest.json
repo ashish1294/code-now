@@ -7,8 +7,9 @@
   "short_name" : "Code Now",
   "content_scripts": [
     {
-      "matches": ["https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"],
-      "js": ["code_later.js"]
+      "run_at" : "document_end",
+      "matches" : ["https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"],
+      "js" : ["code_later.js"]
     }
   ],
   "background": {

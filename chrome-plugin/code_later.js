@@ -80,21 +80,18 @@ function click_codeforces(language)
 }
 
 //Checking if it is CodeChef Problem Page
-if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
+var codechef_interval = null;
+function add_codechef_buttons()
 {
-    //Excluding the Special Codes in CodeChef Problem Regex - These url indicate a list of problems rather than a particular problem
-    var code = us[us.length - 1];
-    if(code !== "easy" && code !== "medium" && code !== "hard" && code !== "challenge" && code !== "extcontest" && code !== "school")
-    {
-        //Adding the Handlers Buttons to the Page
-        document.getElementById('problem-page').getElementsByTagName('ul').item(0).innerHTML = document.getElementById('problem-page').getElementsByTagName('ul').item(0).innerHTML
+    if (document.getElementById('problem-page-top') == null) return;
+    else {
+        document.getElementById('problem-page-top').getElementsByTagName('ul').item(0).innerHTML = document.getElementById('problem-page-top').getElementsByTagName('ul').item(0).innerHTML
         +"<li><a href='#' id='code_now_id_java_button'>Code in Java</a></li>"
         +"<li><a href='#' id='code_now_id_c_button'>Code in C</a></li>"
         +"<li><a href='#' id='code_now_id_c++_button'>Code in C++</a></li>"
         +"<li><a href='#' id='code_now_id_python_button'>Code in Python</a></li>";
 
         console.log("Code Now Button Added !! ~ Code Now Extension");
-
         //Adding listener for Java Button
         document.getElementById("code_now_id_java_button").onclick = function(){ click_codechef("java"); };
 
@@ -104,8 +101,22 @@ if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
         //Adding Button for C++ Button
         document.getElementById("code_now_id_c++_button").onclick = function(){ click_codechef("cpp"); };
 
-        //Adding Button for C++ Button
+        //Adding Button for Python Button
         document.getElementById("code_now_id_python_button").onclick = function(){ click_codechef("py"); };
+
+        clearInterval(codechef_interval);
+    }
+}
+
+
+if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
+{
+    //Excluding the Special Codes in CodeChef Problem Regex - These url indicate a list of problems rather than a particular problem
+    var code = us[us.length - 1];
+    if(code !== "easy" && code !== "medium" && code !== "hard" && code !== "challenge" && code !== "extcontest" && code !== "school")
+    {
+        // Adding A little sleep here because codechef mutates DOM to add all elements dynamically
+        codechef_interval = window.setInterval(add_codechef_buttons, 5000);
     }
 }
 
