@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,  
+  "manifest_version": 2,
   "name": "Code - Now for CodeChef, SPOJ and CodeForces",
   "description": "Extension to Add Code-Now Button to CodeChef, SPOJ and CodeForces Problem Pages. One Button for each - C, C++, Java is added.",
   "version": "3.0",
@@ -7,7 +7,7 @@
   "short_name" : "Code Now",
   "content_scripts": [
     {
-      "matches": ["http://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"],
+      "matches": ["https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"],
       "js": ["code_later.js"]
     }
   ],
@@ -21,6 +21,6 @@
     "128": "icon.png"
   },
   "permissions" : [
-    "tabs", "nativeMessaging", "http://www.codechef.com/*", "https://www.spoj.com/*", "https://codeforces.com/*"
+    "tabs", "nativeMessaging", "https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"
   ]
 }
