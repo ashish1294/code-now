@@ -105,7 +105,7 @@ if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
         document.getElementById("code_now_id_c++_button").onclick = function(){ click_codechef("cpp"); };
 
         //Adding Button for C++ Button
-        document.getElementById("code_now_id_python_button").onclick = function(){ click_codechef("python"); };
+        document.getElementById("code_now_id_python_button").onclick = function(){ click_codechef("py"); };
     }
 }
 
@@ -116,7 +116,7 @@ else if(us.length > 4 && website === "spoj" && us[us.length - 2] === "problems")
     var code = us[us.length - 2];
     if(code !== "classical" && code !== "challenge" && code !== "partial" && code !== "tutorial" && code !== "riddle")
     {
-        document.getElementById("problem-btn-submit-box").innerHTML+= 
+        document.getElementById("problem-btn-submit-box").innerHTML+=
         "<button id='code_now_id_java_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in Java</button>"
         + "<button id='code_now_id_c_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in C</button>"
         + "<button id='code_now_id_c++_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in C++</button>"
@@ -127,7 +127,7 @@ else if(us.length > 4 && website === "spoj" && us[us.length - 2] === "problems")
         document.getElementById("code_now_id_java_button").onclick = function(){ click_spoj("java"); };
         document.getElementById("code_now_id_c_button").onclick = function(){ click_spoj("c"); };
         document.getElementById("code_now_id_c++_button").onclick = function(){ click_spoj("cpp"); };
-        document.getElementById("code_now_id_python_button").onclick = function(){ click_spoj("python"); };
+        document.getElementById("code_now_id_python_button").onclick = function(){ click_spoj("py"); };
     }
 }
 
@@ -136,7 +136,7 @@ else if(us.length > 4 && website === "codeforces" && (us[us.length - 2] === "pro
 {
     //Creating and Adding A whole new Sidebox with 3 buttons
     var sidebar = document.getElementById('sidebar')
-    sidebar.innerHTML = 
+    sidebar.innerHTML =
     '<div class="roundbox sidebox" style="">'
         + '<div class="roundbox-lt">&nbsp;</div>'
         + '<div class="roundbox-rt">&nbsp;</div>'
@@ -163,5 +163,5 @@ else if(us.length > 4 && website === "codeforces" && (us[us.length - 2] === "pro
     document.getElementById("code_now_id_java_button").onclick = function() { click_codeforces("java"); };
     document.getElementById("code_now_id_c_button").onclick = function(){ click_codeforces("c"); };
     document.getElementById("code_now_id_c++_button").onclick = function(){ click_codeforces("cpp"); };
-    document.getElementById("code_now_id_python_button").onclick = function(){ click_codeforces("python"); };
+    document.getElementById("code_now_id_python_button").onclick = function(){ click_codeforces("py"); };
 }
