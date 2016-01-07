@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 
 # May God Bless Us All
+import struct, sys, subprocess, string, re, os, json
 
-import struct
-import sys
-import subprocess
-import string
-import re
-import os
+# Constants
+COMMENT_STR = "{3}\n\tProblem Name = {0}\n\tProblem Link = {1}\n\tUser = {2}\n{4}\n"
+PY_COMMENT_START = "'''"
+PY_COMMENT_END = "'''"
+CPP_JAVA_START = "/*"
+CPP_JAVA_END = '*/'
+IDE = {'c' : 'C_IDE', 'cpp' : 'CPP_IDE', 'java' : 'JAVA_IDE', 'py': 'PYTHON_IDE'}
 
 # Helper function that sends a message to the chrome-plugin.
 def send_message(message):
@@ -23,57 +25,43 @@ def read_func():
       sys.exit(0)
 
     text_length = struct.unpack('i', text_length_bytes)[0]
-
     text = sys.stdin.read(text_length).decode('utf-8')
+    prob = json.loads(text)
 
-    text = string.replace(text,"problem_name","")
-    text = string.replace(text,"problem_url","")
-    text = string.replace(text,"user_name","")
-    text = string.replace(text,"lang","")
-    text = string.replace(text,"\"\":\"","")
-    text = string.replace(text,"{","")
-    text = string.replace(text,"}","")
-    text = string.replace(text,"\"","")
-    info = string.split(text,",")
-
-    info[0] = re.sub('[ ]+', ' ', info[0])
-    filename = re.sub(' ', '_', info[0])
-    filename = "DEFAULT_SOLUTION_PATH" + os.sep + filename + "." + info[3]
+    prob['problem_name'] = re.sub('[ ]+', ' ', prob['problem_name'])
+    filename = re.sub(' ', '_', prob['problem_name'])
+    filename = "DEFAULT_SOLUTION_PATH" + os.sep + filename + "." + prob['lang']
 
     if not os.path.isfile(filename) :
-        file_content = "/*\n\tProblem Name = " + info[0] + "\n\tProblem Link = " + info[1] + "\n\tUser = " + info[2] + "\n*/\n"
-        with open(os.path.join(os.path.dirname(__file__),info[3] + "_template." + info[3]), "r") as myfile:
-            file_content = file_content + myfile.read()
-        fp = open(filename, "w")
-        fp.write(file_content)
-        fp.close()
+      if prob['lang'] == 'py':
+        file_content = COMMENT_STR.format(
+          prob['problem_name'],
+          prob['problem_url'],
+          prob['user_name'],
+          PY_COMMENT_START,
+          PY_COMMENT_END
+        )
+      else:
+        file_content = COMMENT_STR.format(
+          prob['problem_name'],
+          prob['problem_url'],
+          prob['user_name'],
+          CPP_JAVA_START,
+          CPP_JAVA_END
+        )
+      file_name = '{0}_template.{0}'.format(prob['lang'])
+      file_dir = os.path.dirname(__file__)
+      with open(os.path.join(file_dir, file_name), "r") as template_file:
+        file_content = file_content + template_file.read()
+      fp = open(filename, "w")
+      fp.write(file_content)
+      fp.close()
 
-    if info[3] == "java" :
-        try:
-            exit_code = subprocess.check_output(['JAVA_IDE', filename])
-        except subprocess.CalledProcessError, e:
-            send_message('{"text": "Bad Settings. Please Reinstall !!"}')
+    try:
+      exit_code = subprocess.check_output([IDE[prob['lang']], filename])
+    except subprocess.CalledProcessError, e:
+      send_message('{"text": "{0}"}'.format(str(e)))
 
-    elif info[3] == "cpp" :
-        try:
-            exit_code = subprocess.check_output(['CPP_IDE', filename])
-        except subprocess.CalledProcessError, e:
-            send_message('{"text": "Bad Settings. Please Reinstall !!"}')
-
-    elif info[3] == "c" :
-        try:
-            exit_code = subprocess.check_output(['C_IDE', filename])
-        except subprocess.CalledProcessError, e:
-            send_message('{"text": "Bad Settings. Please Reinstall !!"}')
-
-    elif info[3] == "py" :
-        try:
-            exit_code = subprocess.check_output(['PYTHON_IDE', filename])
-        except subprocess.CalledProcessError, e:
-            send_message('{"text": "Bad Settings. Please Reinstall !!"}')
-
-def Main():
+if __name__ == '__main__':
   read_func()
   sys.exit(0)
-if __name__ == '__main__':
-  Main()

@@ -199,7 +199,6 @@ then
     else inst_dir="$HOME/.config/google-chrome/NativeMessagingHosts"
     fi
     if [ ! -d "$inst_dir" ]; then mkdir -p "$inst_dir"; fi
-    echo "Created $inst_dir"
 
     # Removing existing JSON file of any
     json_file="$inst_dir/codenow.json"
@@ -215,7 +214,6 @@ then
     else inst_dir="$HOME/.config/chromium/NativeMessagingHosts"
     fi
     if [ ! -d "$inst_dir" ]; then mkdir -p "$inst_dir"; fi
-    echo "Created $inst_dir"
 
     # Removing existing JSON file of any
     json_file="$inst_dir/codenow.json"
