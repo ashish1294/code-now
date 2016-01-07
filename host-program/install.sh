@@ -228,17 +228,17 @@ echo "Manifest file created .........................."
 # Creating the prog.py script
 cp prog.py $path_dir/.code-now/prog.py
 sed "s:DEFAULT_SOLUTION_PATH:$sol_path:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
-sed "s:PYTHON_IDE:$pythonide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
+sed "s:PYTHON_IDE:$pyide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
 sed "s:JAVA_IDE:$javaide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
 sed "s:CPP_IDE:$cppide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
 sed "s:C_IDE:$cide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
 chmod +x $path_dir/.code-now/prog.py
-echo "Python Script Created ......................"
+echo "Python Script Created .........................."
 
 # Copying the template files
 cp c_template.c "$path_dir/.code-now/"
 cp cpp_template.cpp "$path_dir/.code-now/"
 cp java_template.java "$path_dir/.code-now/"
-cp python_template.py "$path_dir/.code-now/"
-echo "Templates Copied............................"
+cp py_template.py "$path_dir/.code-now/"
+echo "Templates Copied................................"
 echo "Installation Successful !! Please Install the extension"
