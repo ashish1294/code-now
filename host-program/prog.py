@@ -59,8 +59,8 @@ def read_func():
 
     try:
       exit_code = subprocess.Popen([IDE[prob['lang']], filename])
-    except subprocess.CalledProcessError, e:
-      send_message('{"text": "{0}"}'.format(str(e)))
+    except Exception, e:
+      send_message('An Error Has Occured !')
 
 if __name__ == '__main__':
   read_func()
