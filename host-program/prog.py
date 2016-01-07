@@ -58,7 +58,7 @@ def read_func():
       fp.close()
 
     try:
-      exit_code = subprocess.check_output([IDE[prob['lang']], filename])
+      exit_code = subprocess.Popen([IDE[prob['lang']], filename])
     except subprocess.CalledProcessError, e:
       send_message('{"text": "{0}"}'.format(str(e)))
 
