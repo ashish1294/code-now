@@ -90,7 +90,8 @@ if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
         document.getElementById('problem-page').getElementsByTagName('ul').item(0).innerHTML = document.getElementById('problem-page').getElementsByTagName('ul').item(0).innerHTML
         +"<li><a href='#' id='code_now_id_java_button'>Code in Java</a></li>"
         +"<li><a href='#' id='code_now_id_c_button'>Code in C</a></li>"
-        +"<li><a href='#' id='code_now_id_c++_button'>Code in C++</a></li>";
+        +"<li><a href='#' id='code_now_id_c++_button'>Code in C++</a></li>"
+        +"<li><a href='#' id='code_now_id_python_button'>Code in Python</a></li>";
 
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
@@ -102,6 +103,9 @@ if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
 
         //Adding Button for C++ Button
         document.getElementById("code_now_id_c++_button").onclick = function(){ click_codechef("cpp"); };
+
+        //Adding Button for C++ Button
+        document.getElementById("code_now_id_python_button").onclick = function(){ click_codechef("python"); };
     }
 }
 
@@ -116,12 +120,14 @@ else if(us.length > 4 && website === "spoj" && us[us.length - 2] === "problems")
         "<button id='code_now_id_java_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in Java</button>"
         + "<button id='code_now_id_c_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in C</button>"
         + "<button id='code_now_id_c++_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in C++</button>"
+        + "<button id='code_now_id_python_button' class='btn btn-default' style='width: 100%; margin-top: 20px;'>Code in Python</button>";
 
         console.log("Code Now Button Added !! ~ Code Now Extension");
 
         document.getElementById("code_now_id_java_button").onclick = function(){ click_spoj("java"); };
         document.getElementById("code_now_id_c_button").onclick = function(){ click_spoj("c"); };
         document.getElementById("code_now_id_c++_button").onclick = function(){ click_spoj("cpp"); };
+        document.getElementById("code_now_id_python_button").onclick = function(){ click_spoj("python"); };
     }
 }
 
@@ -143,6 +149,7 @@ else if(us.length > 4 && website === "codeforces" && (us[us.length - 2] === "pro
                         + '<button id="code_now_id_java_button">Code in Java</button> <br><br>'
                         + '<button id="code_now_id_c_button">Code in C</button> <br><br>'
                         + '<button id="code_now_id_c++_button">Code in C++</button> <br><br>'
+                        + '<button id="code_now_id_python_button">Code in Python</button> <br><br>'
                       + '</div>'
                     + '</td>'
                 + '</tr>'
@@ -156,4 +163,5 @@ else if(us.length > 4 && website === "codeforces" && (us[us.length - 2] === "pro
     document.getElementById("code_now_id_java_button").onclick = function() { click_codeforces("java"); };
     document.getElementById("code_now_id_c_button").onclick = function(){ click_codeforces("c"); };
     document.getElementById("code_now_id_c++_button").onclick = function(){ click_codeforces("cpp"); };
+    document.getElementById("code_now_id_python_button").onclick = function(){ click_codeforces("python"); };
 }

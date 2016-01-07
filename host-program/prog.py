@@ -15,7 +15,7 @@ def send_message(message):
   sys.stdout.write(message)
   sys.stdout.flush()
 
-# Functiom that reads messages from the chrome-plugin
+# Function that reads messages from the chrome-plugin
 def read_func():
   while 1:
     text_length_bytes = sys.stdin.read(4)
@@ -63,6 +63,12 @@ def read_func():
     elif info[3] == "c" :
         try:
             exit_code = subprocess.check_output(['C_IDE', filename])
+        except subprocess.CalledProcessError, e:
+            send_message('{"text": "Bad Settings. Please Reinstall !!"}')
+
+    elif info[3] == "python" :
+        try:
+            exit_code = subprocess.check_output(['PYTHON_IDE', filename])
         except subprocess.CalledProcessError, e:
             send_message('{"text": "Bad Settings. Please Reinstall !!"}')
 
