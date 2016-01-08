@@ -1,12 +1,12 @@
-code-now-CodeChef
-=================
+code-now
+========
 
-A chrome/chromium plugin for CodeChef / SPOJ to instantly open your Favorite IDE
+A chrome/chromium plugin for CodeChef, SPOJ and CodeForces to instantly open your Favorite IDE
 
 What it does !!
 ---------------
 
-It is a simple chrome/chromium plugin for **Linux Users** which adds 3 button to every CodeChef / SPOJ Problem Page (one for each of C, C++ and Java).
+It is a simple chrome/chromium plugin for **Linux Users** which adds 4 buttons to every CodeChef / SPOJ / CodeForces Problem Page (one for each of C, C++, Python and Java).
 Clicking on each button will open up your favorite IDE for that language instantly with a default template !! It is particularly useful during short contests.
 
 You can choose different IDEs for different Languages. Templates can also be different for different Languages.
@@ -27,7 +27,7 @@ sudo apt-get install chromium-browser
 Installation
 ------------
 
-Easy 2-step Installation. Download the latest release here -> [Release v4.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v4/code-now-CodeChef-v4.0.zip) and unzip it
+Easy 2-step Installation. Download the latest release here -> [Release v4.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v4/code-now-v4.0.zip) and unzip it
 
 1. **Install Plugin** - The chrome plugin is available for free installation on Chrome Web Store. Install it [here](https://chrome.google.com/webstore/detail/code-now-for-codechef-spo/eiifebdnfcadjhgenpanagdankjhkjeb)
 
