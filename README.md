@@ -15,7 +15,7 @@ You can choose different IDEs for different Languages. Templates can also be dif
 Prerequisites
 -------------
 
-Any Linux Distro, Google Chrome Browser, Python 2.7 or above and Your favorite IDEs
+Any Linux Distro /  MAC OS X, Google Chrome Browser, Python 2.7 or above and Your favorite IDEs
 
 Google Chrome can be installed from here : https://www.google.com/chrome/browser/
 Chromium Browser can be installed via Ubuntu Software or by typing following command :
@@ -27,7 +27,7 @@ sudo apt-get install chromium-browser
 Installation
 ------------
 
-Easy 2-step Installation. Download the latest release here -> [Release v3.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v3/code-now-CodeChef-v3.0.zip) and unzip it
+Easy 2-step Installation. Download the latest release here -> [Release v4.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v4/code-now-CodeChef-v4.0.zip) and unzip it
 
 1. **Install Plugin** - The chrome plugin is available for free installation on Chrome Web Store. Install it [here](https://chrome.google.com/webstore/detail/code-now-for-codechef-spo/eiifebdnfcadjhgenpanagdankjhkjeb)
 
@@ -67,3 +67,4 @@ Following is a list of contributors:
 
 1. Ashish Kedia ([@ashish1294](https://github.com/ashish1294))
 2. Dementor ([@sam17](https://github.com/sam17))
+3. Sahil Dua ([@sahildua2305](https://github.com/sahildua2305))

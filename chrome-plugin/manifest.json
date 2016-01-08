@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Code - Now for CodeChef, SPOJ and CodeForces",
   "description": "Extension to Add Code-Now Button to CodeChef, SPOJ and CodeForces Problem Pages. One Button for each - C, C++, Java is added.",
-  "version": "3.0",
+  "version": "4.0",
   "author": "Ashish Kedia",
   "short_name" : "Code Now",
   "content_scripts": [
