@@ -21,11 +21,11 @@ function check_prog() {
     # Second Parameter = name of the variable to switch if successful
     if [ "$OS" == "OSX" ] && [ -x "/Applications/${!1}.app/Contents/MacOS/${!1}" ]
     then
-        eval ${2}="$(( ${!2} ^ 1 ))"
+        eval ${2}=$(( ${!2} ^ 1 ))
         eval ${1}='/Applications/${!1}.app/Contents/MacOS/${!1}'
-    elif hash ${1} > /dev/null 2>&1;
+    elif hash ${!1} > /dev/null 2>&1;
     then
-        ${2}=$(( ${!2} ^ 1 ))
+        eval ${2}=$(( ${!2} ^ 1 ))
     fi
 }
 
