@@ -24,14 +24,13 @@ function click_codechef(language)
     console.log(language + " Code Now Clicked. Opening " + language + " IDE");
     var prob_name = document.title.split("|")[0].trim();
     var prob_url = url;
-    var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
+    var user_code = document.getElementById("user-bar").getElementsByTagName('span')[0];
     var u_name = "";
     //Checking if User is LoggedIn
-    if(user_code.innerHTML.search("Login") != -1)
+    if(user_code.innerHTML.search("logout") == -1)
     {
         //No Logged In User Detected
         u_name = "No User";
-        console.log("Java Code Now Clicked !! No user Logged in");
     }
     else
     {
