@@ -1,8 +1,8 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     try {
         var port = chrome.runtime.connectNative('codenow');
-        port.onMessage.addListener(function(msg) {
-            console.log("Received :" + msg);
+        port.onMessage.addListener(function(message) {
+            console.log("Received : " + message.msg);
         });
         port.onDisconnect.addListener(function() {
             console.log("Code-Now Host disconnected !! Hope You are enjoying this log :P");

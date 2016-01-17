@@ -8,11 +8,12 @@ COMMENT_STR = "{3}\n\tProblem Name = {0}\n\tProblem Link = {1}\n\tUser = {2}\n{4
 PY_COMMENT_START = "'''"
 PY_COMMENT_END = "'''"
 CPP_JAVA_START = "/*"
-CPP_JAVA_END = '*/'
+CPP_JAVA_END = "*/"
 IDE = {'c' : 'C_IDE', 'cpp' : 'CPP_IDE', 'java' : 'JAVA_IDE', 'py': 'PYTHON_IDE'}
 
 # Helper function that sends a message to the chrome-plugin.
 def send_message(message):
+  message = '{"msg": "%s"}' % message
   sys.stdout.write(struct.pack('I', len(message)))
   sys.stdout.write(message)
   sys.stdout.flush()
@@ -49,6 +50,7 @@ def read_func():
           CPP_JAVA_START,
           CPP_JAVA_END
         )
+    try:
       file_name = '{0}_template.{0}'.format(prob['lang'])
       file_dir = os.path.dirname(__file__)
       with open(os.path.join(file_dir, file_name), "r") as template_file:
@@ -56,11 +58,16 @@ def read_func():
       fp = open(filename, "w")
       fp.write(file_content)
       fp.close()
+      send_message("File %s successfully created" % filename)
+    except Exception, e:
+      send_message("Unable to create file %s" % e)
+
 
     try:
       exit_code = subprocess.Popen([IDE[prob['lang']], filename])
+      send_message("Subprocess started for %s with file %s" % (IDE[prob['lang']], filename))
     except Exception, e:
-      send_message('An Error Has Occured !')
+      send_message("Unable to start Subprocess!")
 
 if __name__ == '__main__':
   read_func()

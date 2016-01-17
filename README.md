@@ -1,12 +1,12 @@
 code-now
 ========
 
-A chrome/chromium plugin for CodeChef, SPOJ and CodeForces to instantly open your Favorite IDE
+A chrome/chromium plugin for CodeChef, SPOJ, CodeForces and HackerEarth to instantly open your Favorite IDE
 
 What it does !!
 ---------------
 
-It is a simple chrome/chromium plugin for **Linux Users** which adds 4 buttons to every CodeChef / SPOJ / CodeForces Problem Page (one for each of C, C++, Python and Java).
+It is a simple chrome/chromium plugin for **Linux Users** which adds 4 buttons to every CodeChef / SPOJ / CodeForces / HackerEarth Problem Page (one for each of C, C++, Python and Java).
 Clicking on each button will open up your favorite IDE for that language instantly with a default template !! It is particularly useful during short contests.
 
 You can choose different IDEs for different Languages. Templates can also be different for different Languages.
