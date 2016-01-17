@@ -191,6 +191,9 @@ rm $HOME/.code-now/* > /dev/null 2>&1
 
 #path_dir variable is kept to ensure we can change location in future
 path_dir=$HOME
+
+#parent_path stores the relative path to host-program folder from current shell directory
+parent_path=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 if [ $ischrome -eq 1 ]
 then
     #Creating required installation directory for Chrome
@@ -203,7 +206,7 @@ then
     # Removing existing JSON file of any
     json_file="$inst_dir/codenow.json"
     if [ -f "$json_file" ]; then rm "$json_file"; fi
-    (cat codenow.json | sed -e "s:PATH_TO_REQ_PROG:$path_dir/.code-now/prog.py:g") > "$json_file"
+    (cat $parent_path/codenow.json | sed -e "s:PATH_TO_REQ_PROG:$path_dir/.code-now/prog.py:g") > "$json_file"
 fi
 
 if [ $ischromium -eq 1 ]
@@ -218,13 +221,13 @@ then
     # Removing existing JSON file of any
     json_file="$inst_dir/codenow.json"
     if [ -f "$json_file" ]; then rm "$json_file"; fi
-    (cat codenow.json | sed -e "s:PATH_TO_REQ_PROG:$path_dir/.code-now/prog.py:g") > "$json_file"
+    (cat $parent_path/codenow.json | sed -e "s:PATH_TO_REQ_PROG:$path_dir/.code-now/prog.py:g") > "$json_file"
 fi
 
 echo "Manifest file created .........................."
 
 # Creating the prog.py script
-cp prog.py $path_dir/.code-now/prog.py
+cp $parent_path/prog.py $path_dir/.code-now/prog.py
 sed "s:DEFAULT_SOLUTION_PATH:$sol_path:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
 sed "s:PYTHON_IDE:$pyide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
 sed "s:JAVA_IDE:$javaide:g" "$path_dir/.code-now/prog.py" > "$path_dir/.code-now/prog.py.tmp" && mv "$path_dir/.code-now/prog.py.tmp" "$path_dir/.code-now/prog.py"
@@ -234,9 +237,9 @@ chmod +x $path_dir/.code-now/prog.py
 echo "Python Script Created .........................."
 
 # Copying the template files
-cp c_template.c "$path_dir/.code-now/"
-cp cpp_template.cpp "$path_dir/.code-now/"
-cp java_template.java "$path_dir/.code-now/"
-cp py_template.py "$path_dir/.code-now/"
+cp $parent_path/c_template.c "$path_dir/.code-now/"
+cp $parent_path/cpp_template.cpp "$path_dir/.code-now/"
+cp $parent_path/java_template.java "$path_dir/.code-now/"
+cp $parent_path/py_template.py "$path_dir/.code-now/"
 echo "Templates Copied................................"
 echo "Installation Successful !! Please Install the extension"
