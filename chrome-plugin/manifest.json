@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "run_at" : "document_end",
-      "matches" : ["https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"],
+      "matches" : ["https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*", "https://www.hackerearth.com/*"],
       "js" : ["code_later.js"]
     }
   ],
@@ -22,6 +22,6 @@
     "128": "icon.png"
   },
   "permissions" : [
-    "tabs", "nativeMessaging", "https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*"
+    "tabs", "nativeMessaging", "https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*", "https://www.hackerearth.com/*"
   ]
 }
