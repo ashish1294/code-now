@@ -68,4 +68,4 @@ Following is a list of contributors:
 1. Ashish Kedia ([@ashish1294](https://github.com/ashish1294))
 2. Dementor ([@sam17](https://github.com/sam17))
 3. Sahil Dua ([@sahildua2305](https://github.com/sahildua2305))
-4. Ibrahim Jarif([@jarifibrahim](https://github.com/jarifibrahim))
+4. Ibrahim Jarif ([@jarifibrahim](https://github.com/jarifibrahim))
