@@ -13,7 +13,7 @@ var us = url.split("/");
 var website = us[2].split(".")
 for(i = 0; i < website.length; i++)
 {
-    if (website[i] === "codechef" || website[i] === "spoj" || website[i] === "codeforces")
+    if (website[i] === "codechef" || website[i] === "spoj" || website[i] === "codeforces" || website[i] === "hackerearth")
     {
         website = website[i];
     }
@@ -24,14 +24,13 @@ function click_codechef(language)
     console.log(language + " Code Now Clicked. Opening " + language + " IDE");
     var prob_name = document.title.split("|")[0].trim();
     var prob_url = url;
-    var user_code = document.getElementById("custom-login").getElementsByTagName('span')[0];
+    var user_code = document.getElementById("user-bar").getElementsByTagName('span')[0];
     var u_name = "";
     //Checking if User is LoggedIn
-    if(user_code.innerHTML.search("Login") != -1)
+    if(user_code.innerHTML.search("logout") == -1)
     {
         //No Logged In User Detected
         u_name = "No User";
-        console.log("Java Code Now Clicked !! No user Logged in");
     }
     else
     {
@@ -46,6 +45,10 @@ function click_spoj(language)
 {
     console.log(language + " Code Now Clicked. Opening " + language + " IDE");
     var prob_name = document.getElementsByClassName("prob")[0].getElementsByTagName("h2")[0].innerHTML;
+    prob_name = prob_name.split('-')[1].slice(1);
+    // prog.py throws encoding error if spaces are not removed
+    prob_name = prob_name.replace(/\s/g, '-');
+
     var prob_url = url;
     var u_name = "";
     if(document.getElementsByClassName("text-success")[0].innerText.search("sign in")!=-1)
@@ -54,7 +57,7 @@ function click_spoj(language)
     }
     else
     {
-        u_name = document.getElementsByClassName("username_dropdown")[0].innerText;
+        u_name = document.getElementsByClassName("username_dropdown")[0].innerText.trim();
     }
     chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : language});
 }
@@ -76,10 +79,31 @@ function click_codeforces(language)
         u_name = head_div.getElementsByTagName('a')[0].innerHTML.toLowerCase();
     }
     chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : language});
-    console.log("IDE");
 }
 
-//Checking if it is CodeChef Problem Page
+function click_hackerearth(language)
+{
+    console.log(language + " Code Now Clicked. Opening " + language + " IDE");
+    var prob_name = document.getElementsByClassName('problem-title')[0].innerHTML;
+    var prob_url = url;
+    var u_name = "";
+    var login_link = document.getElementsByClassName('track-header-login show-modal');
+
+    // If login link exists
+    if(login_link.length  !== 0)
+    {
+        u_name = "No User";
+    }
+    else
+    {
+        u_name = document.getElementsByClassName('track-header-profile-box')[0].getAttribute('href').split('@')[1];
+    }
+    chrome.runtime.sendMessage({problem_name: prob_name, problem_url: prob_url, user_name: u_name, lang : language});
+
+}
+
+
+// Helper function to add codechef buttons
 var codechef_interval = null;
 function add_codechef_buttons()
 {
@@ -108,7 +132,7 @@ function add_codechef_buttons()
     }
 }
 
-
+//Checking if it is CodeChef Problem Page
 if(us.length > 4 && website === "codechef" && us[us.length - 2] === "problems")
 {
     //Excluding the Special Codes in CodeChef Problem Regex - These url indicate a list of problems rather than a particular problem
@@ -175,4 +199,27 @@ else if(us.length > 4 && website === "codeforces" && (us[us.length - 2] === "pro
     document.getElementById("code_now_id_c_button").onclick = function(){ click_codeforces("c"); };
     document.getElementById("code_now_id_c++_button").onclick = function(){ click_codeforces("cpp"); };
     document.getElementById("code_now_id_python_button").onclick = function(){ click_codeforces("py"); };
+}
+
+//Checking page for hackerearth problem page
+else if (us.length > 4 && website === 'hackerearth' && us[3] === "problem") {
+  // base DOM element to which buttons are appended
+  var base = document.getElementsByClassName("editor-utility content medium-margin")[0];
+  var add_button = document.createElement("div");
+
+  add_button.innerHTML =
+  "<button id='code_now_id_java_button' class='button btn-blue' style='margin: 20px 5px 0px 0px;'>Code in Java</button>"
+  + "<button id='code_now_id_c_button' class='button btn-blue' style='margin: 20px 5px 0px 0px;'>Code in C</button>"
+  + "<button id='code_now_id_c++_button' class='button btn-blue' style='margin: 20px 5px 0px 0px;'>Code in C++</button>"
+  + "<button id='code_now_id_python_button' class='button btn-blue' style='margin: 20px 5px 0px 0px;'>Code in Python</button>";
+
+  //Add buttons to base element
+  base.appendChild(add_button);
+
+  console.log("Code Now Button Added !! ~ Code Now Extension");
+
+  document.getElementById("code_now_id_java_button").onclick = function(){ click_hackerearth("java"); };
+  document.getElementById("code_now_id_c_button").onclick = function(){ click_hackerearth("c"); };
+  document.getElementById("code_now_id_c++_button").onclick = function(){ click_hackerearth("cpp"); };
+  document.getElementById("code_now_id_python_button").onclick = function(){ click_hackerearth("py"); };
 }
