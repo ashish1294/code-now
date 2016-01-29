@@ -90,7 +90,7 @@ echo "The installation folder comes with 4 template files for C, C++, Java and P
 
 read choice
 
-if [ $choice != "Y" ] && [ $choice != "y" ]
+if [[ $choice != "Y" ]] && [[ $choice != "y" ]]
 then
     echo "Installation Incomplete .........."
     echo "Terminating ..............!!"
