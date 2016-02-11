@@ -1,5 +1,18 @@
 #!/bin/bash
 
+#Color Constants
+RED='\033[31m'
+NC='\033[0m' # No Color
+
+function print_error() {
+    echo -e $RED
+    for var in "$@"
+    do
+        echo -e "$var"
+    done
+    echo -e $NC
+}
+
 #Checking Operating System
 OS='None'
 case "$OSTYPE" in
@@ -10,8 +23,7 @@ esac
 
 if [ "$OS" != "OSX" ] && [ "$OS" != "Linux" ]
 then
-    echo "Incompatible Operating System."
-    echo "Terminating ........!!"
+    print_error "Incompatible Operating System." "Terminating ........!!"
     exit 127
 fi
 
@@ -33,8 +45,8 @@ function check_prog() {
 ROOT_UID="0"
 
 if [ "$UID" -eq "$ROOT_UID" ] ; then
-    echo "Root Privileges Detected....!!"
-    echo "Please Run this script without root privileges"
+    print_error "Root Privileges Detected....!!"
+    print_error "Please Run this script without root privileges"
     exit 127
 fi
 
@@ -43,8 +55,8 @@ if hash python > /dev/null 2>&1;
 then
     echo "Python Detected . . . . . . . . ."
 else
-    echo "Python Not found !! Please install python and try again"
-    echo "Terminating ..........!!"
+    print_error "Python Not found !! Please install python and try again"
+    print_error "Terminating ..........!!"
     exit 127
 fi
 
@@ -80,13 +92,14 @@ fi
 
 if [ $ischrome -eq 0 ] && [ $ischromium -eq 0 ]
 then
-    echo "Neither Google Chrome nor chromium was found !! Please download and install google chrome from https://www.google.com/chrome/browser/"
+    print_error "Neither Google Chrome nor chromium was found !! Please download and install google chrome from https://www.google.com/chrome/browser/"
     echo "Installation Incomplete"
     echo "Terminating ............!!"
     exit 127
 fi
 
-echo "The installation folder comes with 4 template files for C, C++, Java and Python. All new codes will contain their repective templates. Use these template files to include/import all the required header files and classes. Enter Y or y if you want to continue:"
+echo "The installation folder comes with 4 template files for C, C++, Java and Python. All new codes will contain their repective templates. Use these template files to include/import all the required header files and classes."
+echo "Enter Y or y if you want to continue:"
 
 read choice
 
@@ -110,7 +123,7 @@ do
     then
         echo "$cide was found on your system !! Successfully Configured ..........."
     else
-        echo "No software named $cide was not found on your system !!"
+        print_error "No software named $cide was not found on your system !!"
     fi
 done
 
@@ -124,7 +137,7 @@ do
     then
         echo "$cppide was found on your system !! Successfully Configured ..........."
     else
-        echo "No software named $cppide was not found on your system !!"
+        print_error "No software named $cppide was not found on your system !!"
     fi
 done
 
@@ -138,7 +151,7 @@ do
     then
         echo "$javaide was found on your system !! Successfully Configured ..........."
     else
-        echo "No software named $javaide was not found on your system !!"
+        print_error "No software named $javaide was not found on your system !!"
     fi
 done
 
@@ -152,7 +165,7 @@ do
     then
         echo "$pyide was found on your system !! Successfully Configured ..........."
     else
-        echo "No software named $pyide was not found on your system !!"
+        print_error "No software named $pyide was not found on your system !!"
     fi
 done
 
@@ -165,27 +178,27 @@ do
 
     if [[ -z "$sol_path" ]]
     then
-        echo "No Input Found !! Try Again"
+        print_error "No Input Found !! Try Again"
     elif [ -f "$sol_path" ]
     then
-        echo "The Path Specified is a regular file!! Please enter path to a directory !!"
+        print_error "The Path Specified is a regular file!! Please enter path to a directory !!"
     else
         mkdir -p "$sol_path"
         ret=$?
         if [ $ret -ne 0 ]
         then
-            echo "Error in detecting/creating Directory !!"
+            print_error "Error in detecting/creating Directory !!"
         elif [ -w "$sol_path" ]
         then
+            # This means the directory exist and is writable
             loop=0
         else
-            echo "The directory should have write permission !!"
+            print_error "The directory should have write permission !!"
         fi
     fi
 done
 
 #Creating Required Directories
-
 mkdir -p $HOME/.code-now > /dev/null 2>&1
 rm $HOME/.code-now/* > /dev/null 2>&1
 
