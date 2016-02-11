@@ -2,3 +2,5 @@ Install/*
 *~
 *.crx
 *.DS_Store
+*.sublime-project
+pylintrc
