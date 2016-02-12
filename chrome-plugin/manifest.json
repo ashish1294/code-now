@@ -8,8 +8,23 @@
   "content_scripts": [
     {
       "run_at" : "document_end",
-      "matches" : ["https://www.codechef.com/*", "http://www.spoj.com/*", "http://codeforces.com/*", "https://www.hackerearth.com/*"],
-      "js" : ["code_later.js"]
+      "matches" : ["https://www.codechef.com/*"],
+      "js" : ["jquery.js", "basic.js", "codechef_problem.js"]
+    },
+    {
+      "run_at" : "document_end",
+      "matches" : ["http://www.spoj.com/problems/*"],
+      "js" : ["jquery.js", "basic.js", "spoj_problem.js"]
+    },
+    {
+      "run_at" : "document_end",
+      "matches" : ["http://codeforces.com/*"],
+      "js" : ["jquery.js", "basic.js", "codeforces_problem.js"]
+    },
+    {
+      "run_at" : "document_end",
+      "matches" : ["https://www.hackerearth.com/problem/*"],
+      "js" : ["jquery.js", "basic.js", "hackerearth.js"]
     }
   ],
   "background": {
