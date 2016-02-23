@@ -27,7 +27,7 @@ sudo apt-get install chromium-browser
 Installation
 ------------
 
-Easy 2-step Installation. Download the latest release here -> [Release v4.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v4/code-now-v4.0.zip) and unzip it
+Easy 2-step Installation. Download the latest release here -> [Release v5.0](https://github.com/ashish1294/code-now-CodeChef/releases/download/v4/code-now-v5.0.zip) and unzip it
 
 1. **Install Plugin** - The chrome plugin is available for free installation on Chrome Web Store. Install it [here](https://chrome.google.com/webstore/detail/code-now-for-codechef-spo/eiifebdnfcadjhgenpanagdankjhkjeb)
 
